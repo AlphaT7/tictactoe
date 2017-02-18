@@ -1,6 +1,3 @@
-var express = require('express/lib/express');
-var app = express();
-
 const http         = require('http'),
       fs           = require('fs'),
       path         = require('path'),
@@ -13,38 +10,11 @@ let server = http.createServer(function (req, res) {
   if (url == '/') {
     url += 'index.html';
   }
-  
-  app.get('/health', function(req, res){
-    res.writeHead(200);
-    res.end();
-  });
-  
-  app.get('/info/gen' || '/info/poll', function(req, res){
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Cache-Control', 'no-cache, no-store');
-    res.end(JSON.stringify(sysInfo[url.slice(6)]()));
-  });
-  
-  fs.readFile('./static' + url, function (err, data) {
-    if (err) {
-      res.writeHead(404);
-      res.end('Not found');
-    } else {
-      let ext = path.extname(url).slice(1);
-      if (contentTypes[ext]) {
-        res.setHeader('Content-Type', contentTypes[ext]);
-      }
-      if (ext === 'html') {
-        res.setHeader('Cache-Control', 'no-cache, no-store');
-      }
-      res.end(data);
-    }
-  });
 
   // IMPORTANT: Your application HAS to respond to GET /health with status 200
   //            for OpenShift health monitoring
 
-/*
+
   if (url == '/health') {
     res.writeHead(200);
     res.end();
@@ -70,7 +40,7 @@ let server = http.createServer(function (req, res) {
     });
   }
 });
-*/
+
 server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
   console.log(`Application worker ${process.pid} started...`);
 });
