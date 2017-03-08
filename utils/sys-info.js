@@ -30,6 +30,9 @@ exports.gen = function () {
   }, {
     name:  'NODE_ENV',
     value: env.NODE_ENV
+  }, {
+    name:  'NODE_PORT',
+    value: env.OPENSHIFT_nodejs_PORT
   }];
 };
 
