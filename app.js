@@ -23,11 +23,7 @@ io.on('connection', function(socket){
   });
   
   socket.on('clientEvent', function(data){
-	  socket.emit('clientEvent', data);
-  });
-  
-  socket.on('testevent', function(data){
-	console.log(data);
+	  socket.emit('testerEvent', data);
   });
   
 });
