@@ -6,6 +6,14 @@ const http         = require('http'),
       env          = process.env,
       io           = require('socket.io')(http);
 
+let server = http.createServer(function (req, res) {
+  let url = req.url;
+  if (url == '/') {
+    url += 'index.html';
+  }
+
+  // IMPORTANT: Your application HAS to respond to GET /health with status 200
+  //            for OpenShift health monitoring
 
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
@@ -25,16 +33,6 @@ io.on('connection', function(socket){
   });
   
 });
-
-let server = http.createServer(function (req, res) {
-  let url = req.url;
-  if (url == '/') {
-    url += 'index.html';
-  }
-
-  // IMPORTANT: Your application HAS to respond to GET /health with status 200
-  //            for OpenShift health monitoring
-
 
   if (url == '/health') {
     res.writeHead(200);
@@ -61,6 +59,8 @@ let server = http.createServer(function (req, res) {
     });
   }
 });
+
+
 
 server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
   console.log(`Application worker ${process.pid} started...`);
