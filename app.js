@@ -13,21 +13,6 @@ let server = http.createServer(function (req, res) {
   
 var io = require('socket.io').listen(server);
 
-//Whenever someone connects this gets executed
-io.on('connection', function(socket){
-  console.log('A user connected');
-  //Send a message when 
-
-  socket.on('disconnect', function () {
-    console.log('A user disconnected');
-  });
-  
-  socket.on('clientEvent', function(data){
-	  socket.emit('testerEvent', data);
-  });
-  
-});
-
 // IMPORTANT: Your application HAS to respond to GET /health with status 200
 //            for OpenShift health monitoring
 
@@ -57,7 +42,20 @@ io.on('connection', function(socket){
   }
 });
 
+//Whenever someone connects this gets executed
+io.on('connection', function(socket){
+  console.log('A user connected');
+  //Send a message when 
 
+  socket.on('disconnect', function () {
+    console.log('A user disconnected');
+  });
+  
+  socket.on('clientEvent', function(data){
+	  socket.emit('testerEvent', data);
+  });
+  
+});
 
 server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
   console.log(`Application worker ${process.pid} started...`);

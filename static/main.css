@@ -89,23 +89,8 @@ a:hover {
   float: left;
   border: 1px solid grey;
   border-style: inset;
-  font-size: 64pt;
+  font-size: 84pt;
   text-align: center;
   padding-top: 20px;
   cursor: pointer;
-}
-
-
-/* Play nice with small devices */
-
-@media screen and (max-width: 300px) {
-  .fork {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  main {
-    text-align: left;
-  }
 }
