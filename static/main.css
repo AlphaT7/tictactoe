@@ -74,7 +74,7 @@ a:hover {
 }
 
 #tttwrapper{
-  width: 600px;
+  width: 602px;
   height: 600px;
   border: 1px solid #000;
   border-style: inset;
@@ -89,7 +89,7 @@ a:hover {
   float: left;
   border: 1px solid grey;
   border-style: inset;
-  font-size: 44pt;
+  font-size: 64pt;
   text-align: center;
   padding-top: 20px;
 }
