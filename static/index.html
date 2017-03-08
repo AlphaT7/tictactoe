@@ -53,13 +53,17 @@
   
     riot.mount('*')
     
-    //var socket = io();
-    var socket = io.connect('http://nodejs-alphat7.rhcloud.com:8080/', {'forceNew':true });
+    var socket = io();
+    //var socket = io.connect('http://nodejs-alphat7.rhcloud.com:8080/', {'forceNew':true });
     //var socket = io.connect("http://nodejs-alphat7.rhcloud.com:8080");
    
     $('.tttcell').click(function(){
       console.log('test');
       socket.emit('clientEvent', 'Sent an event from the client!');  
+    });
+    
+    socket.on('testerEvent', function(data){
+      console.log(data);
     });
     
     //socket.emit('testevent','{test:"test"}')

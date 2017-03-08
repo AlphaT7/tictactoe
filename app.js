@@ -5,16 +5,14 @@ const http         = require('http'),
       sysInfo      = require('./utils/sys-info'),
       env          = process.env;
       
-
 let server = http.createServer(function (req, res) {
   let url = req.url;
   if (url == '/') {
     url += 'index.html';
   }
+  
 var io = require('socket.io').listen(server);
-  // IMPORTANT: Your application HAS to respond to GET /health with status 200
-  //            for OpenShift health monitoring
-var io = require('socket.io').listen(server);
+
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
   console.log('A user connected');
@@ -25,7 +23,7 @@ io.on('connection', function(socket){
   });
   
   socket.on('clientEvent', function(data){
-	console.log(data);
+	  socket.emit('clientEvent', data);
   });
   
   socket.on('testevent', function(data){
@@ -33,6 +31,9 @@ io.on('connection', function(socket){
   });
   
 });
+
+// IMPORTANT: Your application HAS to respond to GET /health with status 200
+//            for OpenShift health monitoring
 
   if (url == '/health') {
     res.writeHead(200);
