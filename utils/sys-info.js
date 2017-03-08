@@ -32,7 +32,7 @@ exports.gen = function () {
     value: env.NODE_ENV
   }, {
     name:  'NODE_PORT',
-    value: env.OPENSHIFT_nodejs_PORT
+    value: env.OPENSHIFT_NODEJS_PORT
   }, {
     name:  'NODE_APP_NAME',
     value: env.OPENSHIFT_APP_NAME
