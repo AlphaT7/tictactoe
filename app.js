@@ -11,7 +11,7 @@ let server = http.createServer(function (req, res) {
   if (url == '/') {
     url += 'index.html';
   }
-io           = require('socket.io')(http);
+var io = require('socket.io').listen(server);
   // IMPORTANT: Your application HAS to respond to GET /health with status 200
   //            for OpenShift health monitoring
 var io = require('socket.io').listen(server);
