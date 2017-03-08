@@ -3,7 +3,31 @@ const http         = require('http'),
       path         = require('path'),
       contentTypes = require('./utils/content-types'),
       sysInfo      = require('./utils/sys-info'),
-      env          = process.env;
+      env          = process.env,
+      io           = require('socket.io')(http);
+
+
+//Whenever someone connects this gets executed
+io.on('connection', function(socket){
+  console.log('A user connected');
+  //Send a message when 
+  setTimeout(function(){
+	  //Sending an object when emmiting an event
+	socket.emit('testerEvent', { description: 'A custom event named testerEvent!'});
+	}, 4000);
+  socket.on('disconnect', function () {
+    console.log('A user disconnected');
+  });
+  
+  socket.on('clientEvent', function(data){
+	console.log(data);
+  });
+  
+  socket.on('testevent', function(data){
+	console.log(data);
+  });
+  
+});
 
 let server = http.createServer(function (req, res) {
   let url = req.url;

@@ -73,6 +73,22 @@ a:hover {
     box-shadow: 0 0 6px #000 inset;
 }
 
+#tttwrapper{
+  width: 600px;
+  height: 600px;
+  border: 1px solid #000;
+  border-style: inset;
+  box-sizing: border-box;
+}
+
+.tttcell{
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  float: left;
+}
+
+
 /* Play nice with small devices */
 
 @media screen and (max-width: 300px) {
