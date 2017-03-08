@@ -3,18 +3,18 @@ const http         = require('http'),
       path         = require('path'),
       contentTypes = require('./utils/content-types'),
       sysInfo      = require('./utils/sys-info'),
-      env          = process.env,
-      io           = require('socket.io')(http);
+      env          = process.env;
+      
 
 let server = http.createServer(function (req, res) {
   let url = req.url;
   if (url == '/') {
     url += 'index.html';
   }
-
+io           = require('socket.io')(http);
   // IMPORTANT: Your application HAS to respond to GET /health with status 200
   //            for OpenShift health monitoring
-
+var io = require('socket.io').listen(server);
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
   console.log('A user connected');
