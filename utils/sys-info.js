@@ -37,7 +37,7 @@ exports.gen = function () {
     name:  'NODE_APP_NAME',
     value: env.OPENSHIFT_APP_NAME
   }];
-};OPENSHIFT_APP_NAME
+};
 
 exports.poll = function () {
   return [{
