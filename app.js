@@ -37,12 +37,7 @@ var io = require('socket.io').listen(server);
           res.setHeader('Cache-Control', 'no-cache, no-store');
         }
         res.end(data);
-      }
-    });
-  }
-});
-
-//Whenever someone connects this gets executed
+        //Whenever someone connects this gets executed
 io.on('connection', function(socket){
   console.log('A user connected');
   //Send a message when 
@@ -55,6 +50,10 @@ io.on('connection', function(socket){
 	  socket.emit('testerEvent', data);
   });
   
+});
+      }
+    });
+  }
 });
 
 server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
