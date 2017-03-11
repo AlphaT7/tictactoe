@@ -12,11 +12,11 @@ let server = http.createServer(function (req, res) {
   }
   
 var io = require('socket.io').listen(server);
-
+/*
 io.configure(function(){
     io.set("transports", ["websocket"]);
 });
-
+*/
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
   console.log('A user connected');
