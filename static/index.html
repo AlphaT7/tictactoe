@@ -53,7 +53,7 @@
   
     riot.mount('*')
     
-    var socket = io('//nodejs-alphat7.rhcloud.com:8080/', {transports: ['websocket']});
+    var socket = io('//nodejs-alphat7.rhcloud.com:8080/', {transports: ['websocket']}).connect();
     //var socket = io.connect('//nodejs-alphat7.rhcloud.com:8080/', {'forceNew':true });
     //var socket = io.connect('//nodejs-alphat7.rhcloud.com:8080/');
    
