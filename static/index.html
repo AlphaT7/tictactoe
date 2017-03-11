@@ -53,8 +53,8 @@
   
     riot.mount('*')
     
-    var socket = io();
-    //var socket = io.connect('//nodejs-alphat7.rhcloud.com:8080/', {'forceNew':true });
+    //var socket = io();
+    var socket = io.connect('//nodejs-alphat7.rhcloud.com:8080/', {'forceNew':true });
     //var socket = io.connect("//localhost:8080");
    
     $('.tttcell').click(function(){
@@ -66,10 +66,11 @@
       console.log(data);
     });
     
-    
+    /*
     $(window).on('beforeunload', function(){
       socket.close();
     });
+    */
     //socket.emit('testevent','{test:"test"}')
     
   </script>
