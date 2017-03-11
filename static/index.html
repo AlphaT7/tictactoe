@@ -50,29 +50,33 @@
   <script src="https://cdn.jsdelivr.net/superagent/0.18.0/superagent.min.js"></script>
   <script type="riot/tag" src="info.tag"></script>
   <script>
-  
     riot.mount('*')
-    
-    var socket = io('//nodejs-alphat7.rhcloud.com:8080/', {transports: ['websocket']}).connect();
+
+    var socket = io('//nodejs-alphat7.rhcloud.com:8080/', {
+      transports: ['websocket']
+    }).connect();
     //var socket = io.connect('//nodejs-alphat7.rhcloud.com:8080/', {'forceNew':true });
     //var socket = io.connect('//nodejs-alphat7.rhcloud.com:8080/');
-   
-    $('.tttcell').click(function(){
-      console.log('test');
-      socket.emit('clientEvent', 'Sent an event from the client!');  
+
+    socket.on('connect', function() {
+      console.log(socket.id);
     });
-    
-    socket.on('testerEvent', function(data){
+
+    $('.tttcell').click(function() {
+      console.log('test');
+      socket.emit('clientEvent', 'Sent an event from the client!');
+    });
+
+    socket.on('testerEvent', function(data) {
       console.log(data);
     });
-    
+
     /*
     $(window).on('beforeunload', function(){
       socket.close();
     });
     */
     //socket.emit('testevent','{test:"test"}')
-    
   </script>
 </body>
 
