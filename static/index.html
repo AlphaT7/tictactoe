@@ -66,6 +66,10 @@
       console.log(data);
     });
     
+    
+    $(window).on('beforeunload', function(){
+      socket.close();
+    });
     //socket.emit('testevent','{test:"test"}')
     
   </script>
