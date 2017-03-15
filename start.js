@@ -6,16 +6,11 @@ app.get('/', function(req, res){
   res.sendFile('index.html', {"root": __dirname});
 });
 
+/*
 //Whenever someone connects this gets executed
 io.on('connection', function(socket){
   console.log('A user connected');
-  //Send a message when 
-/*
-  setTimeout(function(){
-	  //Sending an object when emmiting an event
-	socket.emit('testerEvent', { description: 'A custom event named testerEvent!'});
-	}, 4000);
-*/	
+
   socket.on('disconnect', function () {
     console.log('A user disconnected');
   });
@@ -29,7 +24,7 @@ io.on('connection', function(socket){
   });
   
 });
-
+*/
 http.listen(process.env.PORT, function(){
   console.log('listening on *: ' + process.env.PORT);
 });
