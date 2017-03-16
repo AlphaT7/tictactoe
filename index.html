@@ -9,17 +9,27 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="shortcut icon" href="ww_favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="css/css.css">
+    <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 
 <body>
 
     <p id='server-time'></p>
+    <div id="tttwrapper">
+      <div class="tttcell"></div>
+      <div class="tttcell"></div>
+      <div class="tttcell"></div><br>
+      <div class="tttcell"></div>
+      <div class="tttcell">X</div>
+      <div class="tttcell"></div><br>
+      <div class="tttcell"></div>
+      <div class="tttcell"></div>
+      <div class="tttcell"></div>
+    </div>
 
     <div id="scripts">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="javascript/js.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script type="text/javascript">
             var socket = io();
