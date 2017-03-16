@@ -1,30 +1,23 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+'use strict';
 
-app.get('/', function(req, res){
-  res.sendFile('index.html', {"root": __dirname});
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
+var newapp = require('app.js');
+
+
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-/*
-//Whenever someone connects this gets executed
-io.on('connection', function(socket){
-  console.log('A user connected');
-
-  socket.on('disconnect', function () {
-    console.log('A user disconnected');
-  });
-  
-  socket.on('clientEvent', function(data){
-	console.log(data);
-  });
-  
-  socket.on('testevent', function(data){
-	console.log(data);
-  });
-  
-});
-*/
-http.listen(process.env.PORT, function(){
-  console.log('listening on *: ' + process.env.PORT);
-});
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
