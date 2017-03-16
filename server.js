@@ -5,19 +5,13 @@ const socketIO = require('socket.io');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-var mime = require('mime');
 
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
-var url = __dirname + '/public/css.css';
-var mimeType = mime.lookup(url);
-
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-server.use((req, res) => res.setHeader('Content-Type', mimeType));
 
 const io = socketIO(server);
 
