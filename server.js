@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
 var app = express();
-app.use(express.static('/static'))
+app.use(express.static('static'))
 
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
