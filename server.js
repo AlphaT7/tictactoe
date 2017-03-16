@@ -10,7 +10,7 @@ var mime = require('mime');
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
-var url = __dirname + '/css.css';
+var url = __dirname + '/public/css.css';
 var mimeType = mime.lookup(url);
 
 const server = express()
