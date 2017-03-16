@@ -9,10 +9,16 @@ const INDEX = path.join(__dirname, 'index.html');
 var app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', function(req, res){
+    res.sendFile(INDEX);
+});
+
+
+/*
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+*/
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
