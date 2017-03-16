@@ -15,8 +15,9 @@ var mimeType = mime.lookup(url);
 
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
-  .use((req, res) => res.setHeader('Content-Type', mimeType))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+server.use((req, res) => res.setHeader('Content-Type', mimeType));
 
 const io = socketIO(server);
 
