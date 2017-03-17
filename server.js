@@ -1,5 +1,7 @@
 var express = require('express/lib/express');
 var app = express();
+var PORT = process.env.PORT || 3000;
+var path = require('path');
 var INDEX = path.join(__dirname, 'index.html');
 
 app.get('/', function(req, res){
