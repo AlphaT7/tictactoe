@@ -39,8 +39,8 @@
                 el.innerHTML = 'Server time: ' + timeString;
             });
             
-            socket.on('test',function(count){
-                $('roomcount').val(count);
+            socket.on('test',function(msg){
+                $('roomcount').val(msg);
             });
             
             $('.tttcell').click(function(){
