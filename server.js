@@ -1,30 +1,26 @@
-'use strict';
+var express = require('express/lib/express');
+var app = express();
+app.set('view engine', 'pug');
+app.set('views','./views');
 
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
-
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
-
-/*
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-*/
-const server = express();
-server.get('/', function(req, res){
-    res.sendFile(INDEX);
-});
-server.listen(PORT);
-
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
+app.get('/', function(req, res){
+    res.send("Hello world!");
 });
 
+app.get('/first_template', function(req, res){
+    res.render('first_view');
+});
 
+app.get('/dynamic_view', function(req, res){
+    res.render('dynamic', {
+        name: "TutorialsPoint", 
+        url:"http://www.tutorialspoint.com"
+    });
+});
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+app.get('/components', function(req, res){
+    res.render('content');
+});
+
+//app.listen(process.env.PORT, process.env.IP);
+app.listen(process.env.PORT);
