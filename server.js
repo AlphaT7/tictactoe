@@ -4,7 +4,7 @@ app.set('view engine', 'pug');
 app.set('views','./views');
 
 app.get('/', function(req, res){
-    res.send("Hello world!");
+    res.render('index');
 });
 
 app.get('/first_template', function(req, res){
