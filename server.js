@@ -24,6 +24,10 @@ io.on('connection', (socket) => {
     socket.emit('test',numClients[socket.room].length)
   });
 */
+  io.on('cellclick', function() {
+    io.emit('test','test successfull');
+  });
+
   socket.on('disconnect', function() {
     //numClients[socket.room]--;
   });
@@ -31,9 +35,7 @@ io.on('connection', (socket) => {
   
 });
 
-io.on('cellclick', function() {
-  io.emit('test','test successfull');
-});
+
 
 
 
