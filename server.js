@@ -11,8 +11,8 @@ app.get('/', function(req, res){
 });
 
 app.listen(process.env.PORT);
-/*
-var server = express().listen(PORT);
+
+var server = express().listen(process.env.PORT);
 
 var io = socketIO(server);
 
@@ -22,4 +22,3 @@ io.on('connection', (socket) => {
 });
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
-*/
