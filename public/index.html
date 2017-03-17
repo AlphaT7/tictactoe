@@ -14,7 +14,8 @@
 
 <body>
 
-    <p id='server-time'></p>
+    <p id="server-time"></p>
+    <p id="roomcount"></p>
     <div id="tttwrapper">
       <div class="tttcell"></div>
       <div class="tttcell"></div>
@@ -36,6 +37,10 @@
             var el = document.getElementById('server-time');
             socket.on('time', function(timeString) {
                 el.innerHTML = 'Server time: ' + timeString;
+            });
+            
+            socket.on('test',function(count){
+                $('roomcount').val(count);
             });
             
             $('.tttcell').click(function(){
