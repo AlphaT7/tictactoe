@@ -37,6 +37,10 @@
             socket.on('time', function(timeString) {
                 el.innerHTML = 'Server time: ' + timeString;
             });
+            
+            $('.tttcell').click(function(){
+                socket.emit('test','test from client');
+            });
         </script>
     </div>
 </body>
