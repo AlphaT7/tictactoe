@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
 
 });
 
-io.on('cellclick', function() {
+io.on('cellclick', (socket) => {
   io.emit('test', 'test successfull');
 });
 
