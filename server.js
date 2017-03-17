@@ -10,9 +10,9 @@ app.get('/', function(req, res){
     res.sendFile(INDEX);
 });
 
-app.listen(process.env.PORT);
+app.listen(PORT);
 
-var server = express().listen(process.env.PORT);
+var server = express().listen(PORT);
 
 var io = socketIO(server);
 
