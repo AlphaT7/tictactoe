@@ -12,13 +12,14 @@ app.get('/', function(req, res){
 
 app.listen(PORT);
 
-var server = express().listen(PORT);
+var server = require('http').createServer(app);
 
-var io = socketIO(server);
+var io = require('socket.io')(server);
 
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
+io.on('connection', function(){ 
+  
+    
+
 });
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+server.listen(PORT);
