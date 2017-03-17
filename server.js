@@ -10,34 +10,30 @@ app.get('/', function(req, res, next) {
 });
 
 io.on('connection', (socket) => {
-/*
-  var numClients = {};
+  /*
+    var numClients = {};
 
-  socket.on('join', function(room) {
-    socket.join(room);
-    socket.room = room;
-    if (numClients[room] == undefined) {
-      numClients[room] = 1;
-    } else {
-      numClients[room]++;
-    }
-    socket.emit('test',numClients[socket.room].length)
-  });
-*/
-  socket.on('cellclick', function() {
-    socket.emit('test','test successfull');
-  });
-
+    socket.on('join', function(room) {
+      socket.join(room);
+      socket.room = room;
+      if (numClients[room] == undefined) {
+        numClients[room] = 1;
+      } else {
+        numClients[room]++;
+      }
+      socket.emit('test',numClients[socket.room].length)
+    });
+  */
   socket.on('disconnect', function() {
     //numClients[socket.room]--;
   });
 
-  
+
 });
 
-
-
-
+io.on('cellclick', function() {
+  io.emit('test', 'test successfull');
+});
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
