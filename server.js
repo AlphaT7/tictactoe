@@ -10,7 +10,7 @@ app.get('/', function(req, res){
     res.sendFile(INDEX);
 });
 
-var io = socketIO(app.listen(process.env.PORT));
+var io = socketIO(app);
 
 io.on('connection', (socket) => {
   console.log('Client connected');
