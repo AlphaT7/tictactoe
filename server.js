@@ -10,6 +10,7 @@ app.get('/', function(req, res, next) {
 });
 
 io.on('connection', (socket) => {
+/*
   var numClients = {};
 
   socket.on('join', function(room) {
@@ -22,13 +23,15 @@ io.on('connection', (socket) => {
     }
     socket.emit('test',numClients[socket.room].length)
   });
-
+*/
   socket.on('disconnect', function() {
-    numClients[socket.room]--;
+    //numClients[socket.room]--;
   });
+
+  
 });
 
-io.socket.on('cellclick', function() {
+io.on('cellclick', function() {
   console.log('test successfull');
 });
 
