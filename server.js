@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
 });
 
 io.on('cellclick', function() {
-  console.log('test successfull');
+  io.emit('test','test successfull');
 });
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
