@@ -10,11 +10,7 @@ app.get('/', function(req, res){
     res.sendFile(INDEX);
 });
 
-app.listen(PORT);
-
-var server = require('http').createServer(app);
-
-var io = socketIO(server);
+var io = socketIO(app);
 
 io.on('connection', function(){ 
   
@@ -22,4 +18,4 @@ io.on('connection', function(){
 
 });
 
-server.listen(PORT);
+app.listen(PORT);
