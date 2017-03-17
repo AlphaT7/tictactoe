@@ -1,6 +1,6 @@
 'use strict';
 
-const express = require('express');
+const express = require('express/lib/express');
 const socketIO = require('socket.io');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
