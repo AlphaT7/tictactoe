@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
   });
 });
 
-io.on('test', function() {
+io.socket.on('cellclick', function() {
   console.log('test successfull');
 });
 
