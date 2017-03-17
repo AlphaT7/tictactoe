@@ -16,6 +16,8 @@ const server = express();
 server.get('/', function(req, res){
     res.sendFile(INDEX);
 });
+server.listen(PORT);
+
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
@@ -23,6 +25,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
 
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
