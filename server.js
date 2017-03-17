@@ -25,7 +25,7 @@ io.on('connection', (socket) => {
     });
   */
 
-  socket.on('cellclick', (socket) => {
+  socket.on('cellclick', function() {
     socket.emit('test', 'test successfull');
   });
 
@@ -35,11 +35,11 @@ io.on('connection', (socket) => {
 
 
 });
-
+/*
 io.on('cellclick', (socket) => {
   io.emit('test', 'test successfull');
 });
-
+*/
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
 server.listen(PORT);
