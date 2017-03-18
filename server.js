@@ -1,3 +1,4 @@
+require('@risingstack/trace');
 var express = require('express');
 const PORT = process.env.PORT || 3000;
 var app = express();
@@ -10,6 +11,7 @@ app.get('/', function(req, res, next) {
 });
 
 io.on('connection', (socket) => {
+  console.log('client connected');
   /*
     var numClients = {};
 
@@ -25,21 +27,26 @@ io.on('connection', (socket) => {
     });
   */
 
-  socket.on('cellclick', function() {
-    socket.emit('test', 'test successfull');
+  socket.on('cellclick', function(data) {
+    io.emit('clickresponse', data);
+    console.log(data);
+  });
+
+  socket.on('clickresponse', function(data){
+    console.log(data);
+  });
+
+  socket.on('error', function (err) {
+    console.log(err);
   });
 
   socket.on('disconnect', function() {
-    //numClients[socket.room]--;
+    console.log('client disconnected')
   });
 
 
 });
-/*
-io.on('cellclick', (socket) => {
-  io.emit('test', 'test successfull');
-});
-*/
+
 setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
 
 server.listen(PORT);
