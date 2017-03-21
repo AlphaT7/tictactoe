@@ -1,10 +1,75 @@
+html body{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+#handlebar{
+  float: left;
+  font-size: 6em;
+  width: 80px;
+  height: 100%;
+  background: blue;
+  background: linear-gradient(to right, rgba(167,207,223,1) 0%,rgba(35,83,138,1) 100%);
+  background: #428bca;
+  color: #fff;
+  cursor: pointer;
+}
+
+#handlebar i{
+  margin: 50px 0 0 10px;
+  height: 100px;
+}
+
+.title{
+  width: 100%;
+  height: 35px;
+  background: #5cb85c;
+  font-size: 1.5em;
+  color: #fff;
+  margin-bottom: 25px;
+  text-align: center;
+  float: left;
+}
+
+#createuser_wrapper{
+  width: 320px;
+  height: 100px;
+  text-align: center;
+  float: right;
+}
+
+#setup_wrapper label{
+    color: #fff;
+}
+
+#creategame_wrapper{
+  float: right;
+  width: 310px;
+  height: 100px;
+  text-align: center;
+}
+
+#joingame_wrapper{
+  float: right;
+  width: 310px;
+  height: 300px;
+  border: 1px solid #FFF;
+}
+
 
 #tttwrapper{
   width: 602px;
   height: 600px;
   border: 1px solid #000;
   border-style: inset;
-  box-sizing: border-box;
   margin: 0 auto;
 }
 
@@ -19,4 +84,19 @@
   text-align: center;
   padding-top: 20px;
   cursor: pointer;
+}
+
+#setup_wrapper{
+   position: absolute;
+   left: calc(100% - 80px);
+   width: 400px;
+   height: 100%;
+   overflow: hidden;
+   background-color: #222;
+   box-shadow: inset 13px -1px 61px -5px rgba(196,215,242,1);
+   background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+}
+
+#scripts{
+  display: none;
 }

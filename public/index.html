@@ -7,30 +7,56 @@
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
     <link rel="shortcut icon" href="ww_favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="css/css.css">
 </head>
 
 <body>
 
-    <p id="server-time"></p>
-    <p id="roomcount"></p>
+    <div id="setup_wrapper">
+        <div id="handlebar">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        </div>
+
+        <div id="createuser_wrapper">
+            <div class="title">Create a New User Profile</div>
+            <input id="username" type="text" placeholder="Your Username"/> <input type="button" id="uid_submit" value="Submit" />
+        </div>
+
+        <div id="creategame_wrapper">
+            <div class="title">Create a New Game</div>
+            <input id="gamename" type="text" placeholder="Game Name"/> <input type="button" id="gamename_submit" value="Submit" />
+        </div>
+
+        <div id="joingame_wrapper">
+            <div class="title">Join Game</div>
+            <select size="5">
+                <option selected>Please choose a game</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="server-time"></div>
+    <div id="roomcount"></div>
+
     <div id="tttwrapper">
-      <div class="tttcell"></div>
-      <div class="tttcell"></div>
-      <div class="tttcell"></div><br>
-      <div class="tttcell"></div>
-      <div class="tttcell">X</div>
-      <div class="tttcell"></div><br>
-      <div class="tttcell"></div>
-      <div class="tttcell"></div>
-      <div class="tttcell"></div>
+        <div id="1-1" class="tttcell"></div>
+        <div id="2-1" class="tttcell"></div>
+        <div id="3-1" class="tttcell"></div><br>
+        <div id="1-2" class="tttcell"></div>
+        <div id="2-2" class="tttcell">X</div>
+        <div id="3-2" class="tttcell"></div><br>
+        <div id="1-3" class="tttcell"></div>
+        <div id="2-3" class="tttcell"></div>
+        <div id="3-3" class="tttcell"></div>
     </div>
 
     <div id="scripts">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
+        <script src="https://use.fontawesome.com/f6c3b2e7f7.js"></script>
+        <script src="javascript/javascript.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script type="text/javascript">
             var socket = io();
@@ -38,16 +64,18 @@
             socket.on('time', function(timeString) {
                 el.innerHTML = 'Server time: ' + timeString;
             });
-            
+
             socket.on('clickresponse', function(data) {
                 console.log(data + ' test');
-                $('#roomcount').val(data);
+                $('#roomcount').html(data);
             });
-            
-            $('.tttcell').click(function(){
-                socket.emit('cellclick','test from client');
+
+            $('.tttcell').click(function() {
+                var cid = this.id;
+                socket.emit('cellclick', cid);
                 console.log('client event')
             });
+
         </script>
     </div>
 </body>
