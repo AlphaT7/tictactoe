@@ -7,7 +7,8 @@ $('#handlebar').click(function() {
    if (flag == 0) {
 
       $('html, body').animate({
-         left: "-320px"
+         left: (($('#setup_wrapper').width() * -1)+80)+'px'
+         //left: "-320px"
       }, 200);
 
       flag = 1;

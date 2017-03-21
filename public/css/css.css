@@ -40,10 +40,10 @@ html body{
 }
 
 #createuser_wrapper{
-  width: 320px;
+  width: calc(100% - 80px);
   height: 100px;
   text-align: center;
-  float: right;
+  float: left;
 }
 
 #setup_wrapper label{
@@ -51,19 +51,17 @@ html body{
 }
 
 #creategame_wrapper{
-  float: right;
-  width: 320px;
+  float: left;
+  width: calc(100% - 80px);
   height: 100px;
   text-align: center;
 }
 
 #joingame_wrapper{
-  float: right;
-  width: 320px;
+  float: left;
+  width:  calc(100% - 80px);;
   height: 300px;
-
 }
-
 
 #tttwrapper{
   width: 602px;
@@ -89,7 +87,7 @@ html body{
 #setup_wrapper{
    position: absolute;
    left: calc(100% - 80px);
-   width: 400px;
+   width: 30%;
    height: 100%;
    overflow: hidden;
    background-color: #222;
@@ -103,4 +101,10 @@ html body{
 
 #scripts{
   display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    #setup_wrapper {
+        width: 100%;
+    }
 }
