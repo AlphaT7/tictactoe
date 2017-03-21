@@ -52,16 +52,16 @@ html body{
 
 #creategame_wrapper{
   float: right;
-  width: 310px;
+  width: 320px;
   height: 100px;
   text-align: center;
 }
 
 #joingame_wrapper{
   float: right;
-  width: 310px;
+  width: 320px;
   height: 300px;
-  border: 1px solid #FFF;
+
 }
 
 
@@ -95,6 +95,10 @@ html body{
    background-color: #222;
    box-shadow: inset 13px -1px 61px -5px rgba(196,215,242,1);
    background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #222222 0%, #222222 50%) 0 / 15px 15px;
+}
+
+#gamelist{
+  width: 100%;
 }
 
 #scripts{
