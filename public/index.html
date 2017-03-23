@@ -7,7 +7,7 @@
     <meta content="utf-8" http-equiv="encoding">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="shortcut icon" href="ww_favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="css/css.css">
 </head>
@@ -16,29 +16,33 @@
 
     <div id="setup_wrapper">
         <div id="handlebar">
-            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+            <i class="glyphicon glyphicon-chevron-left" aria-hidden="true"></i>
         </div>
 
-        <div id="createuser_wrapper">
+        <form id="createuser_wrapper">
             <div class="title">Create a Profile</div>
-            <input id="username" type="text" placeholder="Your Username"/> <input type="button" id="uid_submit" value="Submit" />
-        </div>
+            <input id="username" type="text" placeholder="Your Username" required pattern="[A-Za-z0-9]+" /> <input type="submit" id="uid_submit" value="Submit" />
+        </form>
 
-        <div id="creategame_wrapper">
+        <form id="creategame_wrapper">
             <div class="title">Create a Game</div>
-            <input id="gamename" type="text" placeholder="Game Name"/> <input type="button" id="gamename_submit" value="Submit" />
-        </div>
+            <input id="gamename" type="text" placeholder="Game Name" required pattern="[A-Za-z0-9_]+" /> <input type="submit" id="gamename_submit" value="Submit" />
+        </form>
 
         <div id="joingame_wrapper">
             <div class="title">Join Game</div>
             <select id="gamelist" size="5">
                 <option selected>Please choose a game</option>
             </select>
+            <input type="button" id="joingame_submit" value="Submit"><br>
+            <input type="button" id="text_btn" value="test">
         </div>
     </div>
 
-    <div id="server-time"></div>
-    <div id="roomcount"></div>
+    <div id="gamedata">
+        <div id="server-time"></div>
+        <div id="roomcount"></div>
+    </div>
 
     <div id="tttwrapper">
         <div id="1-1" class="tttcell"></div>
@@ -55,12 +59,15 @@
     <div id="scripts">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-        <script src="https://use.fontawesome.com/f6c3b2e7f7.js"></script>
         <script src="javascript/javascript.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script type="text/javascript">
+            
+            var username = '';
+            var gameroom = '';
             var socket = io();
             var el = document.getElementById('server-time');
+            
             socket.on('time', function(timeString) {
                 el.innerHTML = 'Server time: ' + timeString;
             });
@@ -69,13 +76,43 @@
                 console.log(data + ' test');
                 $('#roomcount').html(data);
             });
-
+            
+            socket.on('test_response', function(data) {
+                alert(data)
+            });
+            
+            /*            
+                        socket.on('uid_check', function(data) {
+                            alert(data.response)
+                            if(data.response = 'User Created'){
+                                alert(data.uid)
+                                $('#createuser_wrapper').css('display', 'none');
+                            }
+                        })
+            */
+            
             $('.tttcell').click(function() {
                 var cid = this.id;
                 socket.emit('cellclick', cid);
                 console.log('client event')
             });
-
+            
+            /*
+                        $('#uid_submit').click(function() {
+                            //socket.emit('uid',$('#username').val())
+                            $.ajax({
+                                    method: "GET",
+                                    url: "/userid",
+                                    data: {
+                                        name: $('#username').val()
+                                    }
+                                })
+                                .done(function(msg) {
+                                    alert("Data Saved: " + msg);
+                                });
+                        });
+            */
+            
         </script>
     </div>
 </body>

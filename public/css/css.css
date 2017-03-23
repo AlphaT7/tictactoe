@@ -5,6 +5,9 @@ html body{
   position: absolute;
   width: 100%;
   height: 100%;
+  background-image: url('../asphalt.png');
+  background-size: 160px 160px;
+  background-repeat: repeat;
 }
 
 *{
@@ -13,10 +16,9 @@ html body{
 
 #handlebar{
   float: left;
-  font-size: 6em;
+  font-size: 5em;
   width: 80px;
   height: 100%;
-  background: blue;
   background: linear-gradient(to right, rgba(167,207,223,1) 0%,rgba(35,83,138,1) 100%);
   background: #428bca;
   color: #fff;
@@ -34,9 +36,10 @@ html body{
   background: #5cb85c;
   font-size: 1.5em;
   color: #fff;
-  margin-bottom: 25px;
-  text-align: center;
+  margin-bottom: 15px;
+  text-align: left;
   float: left;
+  padding: 0 0 0 15px;
 }
 
 #createuser_wrapper{
@@ -46,28 +49,23 @@ html body{
   float: left;
 }
 
-#setup_wrapper label{
-    color: #fff;
-}
-
 #creategame_wrapper{
   float: left;
   width: calc(100% - 80px);
   height: 100px;
   text-align: center;
+  padding: 0 0 15px 0;
 }
 
 #joingame_wrapper{
   float: left;
   width:  calc(100% - 80px);;
   height: 300px;
+  text-align: center;
 }
 
 #tttwrapper{
   width: 602px;
-  height: 600px;
-  border: 1px solid #000;
-  border-style: inset;
   margin: 0 auto;
 }
 
@@ -78,10 +76,20 @@ html body{
   float: left;
   border: 1px solid grey;
   border-style: inset;
-  font-size: 84pt;
+  font-size: 5em;
   text-align: center;
   padding-top: 20px;
   cursor: pointer;
+  background: rgba(255,255,255,.2);
+  color: #fff;
+/*  
+  animation: neonBlueText 1.5s ease-in-out infinite alternate;
+  animation: neonBlue 1.5s ease-in-out infinite alternate;
+*/  
+}
+
+.addneonblue{
+  animation: neonBlueText 1.5s ease-in-out infinite alternate;
 }
 
 #setup_wrapper{
@@ -99,12 +107,70 @@ html body{
   width: 100%;
 }
 
+#joingame_submit{
+  width: 50%;
+}
+
 #scripts{
   display: none;
+}
+
+#gamedata{
+  background: #5cb85c;
+  color: #fff;
+  width: calc(100% - 80px);
+  padding: 0 0 0 15px;
+}
+
+input[type='text']{
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px;
+}
+
+/* --- N E O N    T E X T --- */
+@keyframes neonBlueText {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
+
+@keyframes neonOrangeText {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF9900, 0 0 70px #FF9900, 0 0 80px #FF9900, 0 0 100px #FF9900, 0 0 150px #FF9900;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF9900, 0 0 35px #FF9900, 0 0 40px #FF9900, 0 0 50px #FF9900, 0 0 75px #FF9900;
+  }
+}
+
+/* --- N E O N --- */
+
+/* animation: neon 1.5s ease-in-out infinite alternate; */
+
+@keyframes neonBlue {
+  from {
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
 }
 
 @media only screen and (max-width: 800px) {
     #setup_wrapper {
         width: 100%;
+    }
+    
+    #tttwrapper{
+      float: left;
+      width: calc(100% - 80px);
+    }
+    
+    .tttcell{
+      width: 33%;
     }
 }

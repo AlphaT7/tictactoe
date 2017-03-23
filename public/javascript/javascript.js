@@ -7,8 +7,7 @@ $('#handlebar').click(function() {
    if (flag == 0) {
 
       $('html, body').animate({
-         left: (($('#setup_wrapper').width() * -1)+80)+'px'
-         //left: "-320px"
+         left: (($('#setup_wrapper').width() * -1) + 80) + 'px'
       }, 200);
 
       flag = 1;
@@ -21,16 +20,52 @@ $('#handlebar').click(function() {
       flag = 0;
    }
 
-   setTimeout(function(){ $('#handlebar i').toggleClass('fa-angle-double-right')}, 200 );
-
-});
-
-/* Then push them back */
-/*
-$('#chat_title').click(function() {
-   $('body').animate({
-      left: "0px"
+   setTimeout(function() {
+      $('#handlebar i').toggleClass('glyphicon-chevron-right'),
+      $('#handlebar').toggleClass('addneonblue')
    }, 200);
-   $('#sms').removeClass('blink');
+
 });
-*/
+
+$('.tttcell').height($('.tttcell').width());
+
+$("#createuser_wrapper").submit(function(e) {
+   e.preventDefault();
+   if ($('#username').val() != '') {
+      $.ajax({
+            method: "GET",
+            url: "/userid",
+            data: {
+               name: $('#username').val()
+            }
+         })
+         .done(function(data) {
+            username = data;
+            alert(data);
+         });
+   }
+});
+
+$("#creategame_wrapper").submit(function(e) {
+   e.preventDefault();
+   if ($('#gamename').val() != '' && username != '') {
+      $.ajax({
+            method: "GET",
+            url: "/gamename",
+            data: {
+               name: $('#gamename').val()
+            }
+         })
+         .done(function(room) {
+            alert(room);
+            gameroom = room;
+            $('#gamelist').html($('#gamelist').html() + '<option id="' + gameroom + '"> ' + gameroom + ' </option>')
+            console.log('You have joined: ' + gameroom);
+            socket.emit('joinroom', gameroom);
+         });
+   }
+});
+
+$('#text_btn').click(function(){
+   socket.emit('test',gameroom);
+});
