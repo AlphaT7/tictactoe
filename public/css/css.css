@@ -64,6 +64,10 @@ html body{
   text-align: center;
 }
 
+.gamecell{
+  font-size: 9em;
+}
+
 #tttwrapper{
   width: 602px;
   margin: 0 auto;
@@ -76,20 +80,29 @@ html body{
   float: left;
   border: 1px solid grey;
   border-style: inset;
-  font-size: 5em;
   text-align: center;
-  padding-top: 20px;
   cursor: pointer;
   background: rgba(255,255,255,.2);
   color: #fff;
-/*  
-  animation: neonBlueText 1.5s ease-in-out infinite alternate;
-  animation: neonBlue 1.5s ease-in-out infinite alternate;
-*/  
+  padding-top: 8px;
 }
 
-.addneonblue{
+.victoryanimation{
   animation: neonBlueText 1.5s ease-in-out infinite alternate;
+}
+
+.loseranimation{
+  animation: neonOrangeText 1.5s ease-in-out infinite alternate;
+}
+
+#server-time{
+  float: left;
+}
+
+#uid_info, #gname_info, #oname_info, #turn_info{
+  float: right;
+  padding: 0 10px 0 0;
+  clear: right;
 }
 
 #setup_wrapper{
@@ -120,6 +133,7 @@ html body{
   color: #fff;
   width: calc(100% - 80px);
   padding: 0 0 0 15px;
+  height: 20px;
 }
 
 input[type='text']{
