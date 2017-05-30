@@ -39,10 +39,11 @@ socket.broadcast.to(socketid).emit('message', 'for your eyes only');
 // Add neon glow to winning streak and losing side ------- done!
 // Fix winning combinations bug -------------------------- done!
 // Make sure it doesn't broadcast gamerooms that are full  done!
-// New Game button, and notice if you switch gamerooms
-// Backup all the tictacto code locally
+// Notice if you switch gamerooms ------------------------ done!
+// Backup all the tictacto code locally ------------------ done!
 // Change heroku sub-domain / prefix
 // Upload final version to heroku
+// Post to Github
 
 
 
@@ -83,27 +84,14 @@ function gameOver(playerarray){
 }
 
 function gameroomcleanup(data, socket){
-  console.log('oldgamename - ' + data.oldgamename);
   if(data.oldgamename != undefined){
     games[data.oldgamename].gameover = true;
+    delete games[data.oldgamename][socket.id];
     socket.broadcast.to(data.oldgamename).emit('message', 'Your opponent has left the game.');
     socket.leave(data.oldgamename);
   }
 }
 
-/*
-function searchObj (obj, query) {
-    for (var key in obj) {
-        var value = obj[key];
-        if (typeof value === 'object') {
-            searchObj(value, query);
-        }
-        if (value === query) {
-            console.log('property=' + key + ' value=' + value);
-        }
-    }
-}
-*/
 app.use(express.static('public'));
 
 app.get('/', function(req, res, next) {
@@ -193,7 +181,6 @@ io.on('connection', (socket) => {
     } else {
       users[name] = socket.id;
       socket.emit('create_user', name);
-      console.log('Username: ' + name + ' has been assigned.');
     }
   });
 
@@ -203,11 +190,11 @@ io.on('connection', (socket) => {
       socket.emit('message', 'This name is already in use.')
     } else {
       gameroomcleanup(data, socket);
+      io.emit('removegame',data.oldgamename);
       socket.join(data.gamename, function() {
         games[data.gamename] = {'playercount': 1, 'playerturn': 1, [socket.id]: [], 'player1': data.username, 'usedmoves': [], 'gameover': false};
         socket.emit('joingame',data.gamename);
         socket.broadcast.emit('addgame', data.gamename);
-        console.log('Game Created: ' + data.gamename + ' has been created.');
       });
     }
   });
