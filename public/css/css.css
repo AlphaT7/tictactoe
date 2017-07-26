@@ -16,7 +16,7 @@ html body{
 
 #handlebar{
   float: left;
-  font-size: 5em;
+  font-size: 4.5em;
   width: 80px;
   height: 100%;
   background: linear-gradient(to right, rgba(167,207,223,1) 0%,rgba(35,83,138,1) 100%);
@@ -65,7 +65,7 @@ html body{
 }
 
 .gamecell{
-  font-size: 9em;
+  /*font-size: 9em;*/
 }
 
 #tttwrapper{
@@ -85,6 +85,7 @@ html body{
   background: rgba(255,255,255,.2);
   color: #fff;
   padding-top: 8px;
+  font-size: 7vw;
 }
 
 .victoryanimation{
@@ -142,6 +143,12 @@ input[type='text']{
   border: 1px;
 }
 
+
+
+form{
+  margin-bottom: 20px;
+}
+
 /* --- N E O N    T E X T --- */
 @keyframes neonBlueText {
   from {
@@ -186,5 +193,20 @@ input[type='text']{
     
     .tttcell{
       width: 33%;
+      font-size: 14vw;
+    }
+    
+    input[type='submit']{
+      margin-top: 5px;
+    }
+    
+    form{
+      text-align: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .tttcell{
+      font-size: 15vw;
     }
 }

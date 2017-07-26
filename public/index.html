@@ -16,11 +16,11 @@
 
     <div id="setup_wrapper">
         <div id="handlebar">
-            <i class="glyphicon glyphicon-chevron-left" aria-hidden="true"></i>
+            <i class="glyphicon glyphicon-cog" aria-hidden="true"></i>
         </div>
 
         <form id="createuser_wrapper">
-            <div class="title">Create a User Name</div>
+            <div class="title">Create User Name</div>
             <input id="username" type="text" placeholder="Your Username" required pattern="[A-Za-z0-9]+" /> <input type="submit" id="uid_submit" value="Submit" />
         </form>
 
@@ -60,9 +60,9 @@
 
     <div id="scripts">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-        <script src="javascript/javascript.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="javascript/flowtype.js"></script>
+        <script type="text/javascript" src="javascript/javascript.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
         <script type="text/javascript">
             
             var username = '';
@@ -77,9 +77,9 @@
 
             socket.on('clickresponse', function(data) {
                 if (isEven(data.playerturn)){
-                    document.getElementById(data.cellid).innerHTML = '<div class="gamecell">O</div>';
+                    document.getElementById(data.cellid).innerHTML = 'O';
                 } else {
-                    document.getElementById(data.cellid).innerHTML = '<div class="gamecell">X</div>';
+                    document.getElementById(data.cellid).innerHTML = 'X';
                 }
             });
             
